@@ -7,7 +7,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import java.lang.reflect.Method;
 
 /**
- * 控制器路由修改，实现包名路径截取
+ * 自动补充路由前缀。控制器路由修改，实现包名路径截取
  */
 public class AutoPrefixUrlMapping extends RequestMappingHandlerMapping {
 

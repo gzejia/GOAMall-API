@@ -1,0 +1,12 @@
+# 服务信息配置
+server:
+  port: 8081
+
+# 数据库连接
+# serverTimezone=GMT%2B8 同步北京时间
+spring:
+  datasource:
+    name: mysql
+    url: jdbc:mysql://localhost:3306/goamall?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: urun1234

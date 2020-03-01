@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    # resource下文件引用激活
+    active: dev
+  jpa:
+    hibernate:
+      # update 新增模型才更新表配置，create-drop 是清空后生成新的表
+      ddl-auto: update
+
+# 定义接口所在路径
+goamall:
+  api-package: com.nuon.goamall.api
