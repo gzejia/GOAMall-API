@@ -2,6 +2,7 @@ package com.nuon.goamall.api.v1;
 
 import com.nuon.goamall.core.UnifyResponse;
 import com.nuon.goamall.dto.PersonDTO;
+import com.nuon.goamall.model.Banner;
 import com.nuon.goamall.service.BannerService;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class BannerController {
      */
     @PostMapping("/name/{name}")
     public UnifyResponse getByName(@PathVariable @NotBlank String name) {
+        Banner banner = bannerService.getByName(name);
         return null;
     }
 

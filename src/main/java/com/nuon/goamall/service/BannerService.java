@@ -1,6 +1,8 @@
 package com.nuon.goamall.service;
 
+import com.nuon.goamall.model.Banner;
+
 public interface BannerService {
 
-    void getByName();
+    Banner getByName(String name);
 }

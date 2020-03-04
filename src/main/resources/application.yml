@@ -4,8 +4,8 @@ spring:
     active: dev
   jpa:
     hibernate:
-      # update 新增模型才更新表配置，create-drop 是清空后生成新的表
-      ddl-auto: update
+      # update 新增模型才更新表配置，create-drop 是清空后生成新的表，none 不生成
+      ddl-auto: none
 
 # 定义接口所在路径
 goamall:

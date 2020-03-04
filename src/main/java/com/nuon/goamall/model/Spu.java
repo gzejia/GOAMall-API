@@ -1,9 +1,12 @@
 package com.nuon.goamall.model;
 
+import sun.rmi.runtime.Log;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class BannerItem {
+public class Spu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,12 +14,8 @@ public class BannerItem {
 
     private String name;
 
-    private String img;
+    private String title;
 
-    private String keyword;
-
-    private Short type;
-
-    @ManyToOne
-    private Banner banner;
+    @ManyToMany(mappedBy = "spuList")
+    private List<Them> themList;
 }

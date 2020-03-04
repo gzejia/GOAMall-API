@@ -18,7 +18,6 @@ public class Banner {
 
     private String title;
 
-    @OneToMany
-    @JoinColumn(name = "bannerId")
+    @OneToMany(mappedBy = "banner", fetch = FetchType.LAZY) // 默认开启懒加载
     private List<BannerItem> items;
 }
