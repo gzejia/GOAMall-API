@@ -6,6 +6,12 @@ spring:
     hibernate:
       # update 新增模型才更新表配置，create-drop 是清空后生成新的表，none 不生成
       ddl-auto: none
+  jackson:
+    # 属性值下划线拼接
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      # 日期时间设定为时间戳格式
+      WRITE_DATES_AS_TIMESTAMPS: true
 
 # 定义接口所在路径
 goamall:
