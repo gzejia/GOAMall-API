@@ -1,6 +1,11 @@
 package com.nuon.goamall.vo;
 
-public class SpuSimpleLiftVO {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class SpuSimplifyVO {
 
     private Long id;
     private String title;

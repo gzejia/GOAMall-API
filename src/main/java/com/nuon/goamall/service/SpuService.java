@@ -1,12 +1,13 @@
 package com.nuon.goamall.service;
 
 import com.nuon.goamall.model.Spu;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface SpuService {
 
     Spu getSpu(Long id);
 
-    List<Spu> getLatestPaginationSpu();
+    Page<Spu> getLatestPaginationSpu(Integer pageNum, Integer size);
+
+    Page<Spu> getByCategory(Long cid, Boolean isRoot, Integer pageNum, Integer size);
 }
