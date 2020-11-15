@@ -16,3 +16,8 @@ spring:
         # 显示SQL查询语句
         show_sql: true
         format_sql: true
+nuon:
+  security:
+    # token令牌key
+    jwt-key: nuon20190802
+    token-expired-in: 86400000

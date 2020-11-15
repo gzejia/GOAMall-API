@@ -1,4 +1,4 @@
-package com.nuon.goamall.validators;
+package com.nuon.goamall.dto.validators;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.FIELD})
 @Constraint(validatedBy = PasswordValidator.class)
 public @interface PasswordEqual {
 

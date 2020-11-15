@@ -1,6 +1,6 @@
 package com.nuon.goamall.dto;
 
-import com.nuon.goamall.validators.PasswordEqual;
+import com.nuon.goamall.dto.validators.PasswordEqual;
 import lombok.Getter;
 import lombok.Setter;
 

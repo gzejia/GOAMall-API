@@ -1,4 +1,4 @@
-package com.nuon.goamall.validators;
+package com.nuon.goamall.dto.validators;
 
 import com.nuon.goamall.dto.PersonDTO;
 
@@ -10,14 +10,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class PasswordValidator implements ConstraintValidator<PasswordEqual, PersonDTO> {
 
-    /**
-     * 密码最小长度
-     */
     private int min;
-
-    /**
-     * 密码最大长度
-     */
     private int max;
 
     @Override
