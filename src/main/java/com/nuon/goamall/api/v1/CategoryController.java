@@ -1,6 +1,6 @@
 package com.nuon.goamall.api.v1;
 
-import com.nuon.goamall.exception.NoFoundException;
+import com.nuon.goamall.exception.NotFoundException;
 import com.nuon.goamall.model.Category;
 import com.nuon.goamall.model.GridCategory;
 import com.nuon.goamall.service.CategoryService;
@@ -36,7 +36,7 @@ public class CategoryController {
     public List<GridCategory> getGridCategoryList() {
         List<GridCategory> list = gridCategoryService.getAll();
         if (list.isEmpty()) {
-            throw new NoFoundException(30009);
+            throw new NotFoundException(30009);
         }
         return list;
     }

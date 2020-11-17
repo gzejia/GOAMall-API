@@ -2,7 +2,7 @@ package com.nuon.goamall.api.v1;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
-import com.nuon.goamall.exception.NoFoundException;
+import com.nuon.goamall.exception.NotFoundException;
 import com.nuon.goamall.model.Theme;
 import com.nuon.goamall.service.ThemeService;
 import com.nuon.goamall.vo.ThemePureVO;
@@ -39,6 +39,6 @@ public class ThemeController {
     @GetMapping("/name/{name}/with_spu")
     public Theme getThemeByNameWithSpu(@PathVariable(name = "name") String themeName){
         Optional<Theme> optionalTheme = this.themeService.findByName(themeName);
-        return optionalTheme.orElseThrow(()-> new NoFoundException(30003));
+        return optionalTheme.orElseThrow(()-> new NotFoundException(30003));
     }
 }

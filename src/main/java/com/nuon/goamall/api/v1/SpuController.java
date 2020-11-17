@@ -1,7 +1,7 @@
 package com.nuon.goamall.api.v1;
 
 import com.nuon.goamall.bo.PageCounter;
-import com.nuon.goamall.exception.NoFoundException;
+import com.nuon.goamall.exception.NotFoundException;
 import com.nuon.goamall.model.Spu;
 import com.nuon.goamall.service.SpuService;
 import com.nuon.goamall.util.CommonUtil;
@@ -28,7 +28,7 @@ public class SpuController {
         Spu spu = this.spuService.getSpu(id);
 
         if (null == spu) {
-            throw new NoFoundException(30003);
+            throw new NotFoundException(30003);
         }
         return spu;
     }

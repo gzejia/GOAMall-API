@@ -2,7 +2,7 @@ package com.nuon.goamall.api.v1;
 
 import com.nuon.goamall.dto.TokenDTO;
 import com.nuon.goamall.dto.TokenGetDTO;
-import com.nuon.goamall.exception.NoFoundException;
+import com.nuon.goamall.exception.NotFoundException;
 import com.nuon.goamall.service.WxAuthenticationService;
 import com.nuon.goamall.util.JwtToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class TokenController {
             case USER_Email:
                 break;
             default:
-                throw new NoFoundException(10003);
+                throw new NotFoundException(10003);
         }
         map.put("token", token);
         return map;

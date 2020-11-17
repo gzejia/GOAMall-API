@@ -1,6 +1,6 @@
 package com.nuon.goamall.api.v1;
 
-import com.nuon.goamall.exception.NoFoundException;
+import com.nuon.goamall.exception.NotFoundException;
 import com.nuon.goamall.model.Banner;
 import com.nuon.goamall.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class BannerController {
         Banner banner = bannerService.getByName(name);
 
         if (null == banner) {
-            throw new NoFoundException(30005);
+            throw new NotFoundException(30005);
         }
         return banner;
     }

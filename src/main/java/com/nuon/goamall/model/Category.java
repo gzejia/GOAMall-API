@@ -26,4 +26,10 @@ public class Category extends BaseEntity {
     @JoinTable(name="theme_spu", joinColumns = @JoinColumn(name="theme_id")
             , inverseJoinColumns = @JoinColumn(name="spu_id"))
     private List<Spu> spuList;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "coupon_category",
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "coupon_id"))
+    private List<Coupon> couponList;
 }
