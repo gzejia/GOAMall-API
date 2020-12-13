@@ -1,5 +1,6 @@
 package com.nuon.goamall.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.nuon.goamall.util.GenericAndJson;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -27,8 +29,8 @@ public class Sku extends BaseEntity {
     private Long spuId;
     private String code;
     private Long stock;
-    private Integer categoryId;
-    private Integer rootCategoryId;
+    private Long categoryId;
+    private Long rootCategoryId;
 
     // 序列化方案1
     //    @Convert(converter = MapAndJson.class)
@@ -41,18 +43,27 @@ public class Sku extends BaseEntity {
     // 序列化方案3
     private String specs;
 
+    public BigDecimal getActualPrice() {
+        return discountPrice == null ? this.price : this.discountPrice;
+    }
+
     public List<Spec> getSpecs() {
-        if (null == this.specs) {
+        if (this.specs == null) {
             return Collections.emptyList();
         }
         return GenericAndJson.json2Object(this.specs, new TypeReference<List<Spec>>() {
         });
     }
 
-    public void setSpecs(List<Spec> list) {
-        if (null == specs) {
+    public void setSpecs(List<Spec> specs) {
+        if (specs.isEmpty()) {
             return;
         }
-        this.specs = GenericAndJson.object2Json(list);
+        this.specs = GenericAndJson.object2Json(specs);
+    }
+
+    @JsonIgnore
+    public List<String> getSpecValueList() {
+        return this.getSpecs().stream().map(Spec::getValue).collect(Collectors.toList());
     }
 }

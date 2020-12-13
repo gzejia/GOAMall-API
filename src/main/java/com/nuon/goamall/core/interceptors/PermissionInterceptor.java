@@ -1,11 +1,13 @@
 package com.nuon.goamall.core.interceptors;
 
 import com.auth0.jwt.interfaces.Claim;
+import com.nuon.goamall.core.LocalUser;
 import com.nuon.goamall.exception.ForbiddenException;
 import com.nuon.goamall.exception.NoAuthorizationException;
 import com.nuon.goamall.model.User;
+import com.nuon.goamall.service.UserService;
 import com.nuon.goamall.util.JwtToken;
-import jdk.nashorn.internal.runtime.options.Option;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +19,9 @@ import java.util.Map;
 import java.util.Optional;
 
 public class PermissionInterceptor extends HandlerInterceptorAdapter {
+
+    @Autowired
+    private UserService userService;
 
     public PermissionInterceptor() {
         super();
@@ -35,6 +40,9 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
                 () -> new NoAuthorizationException(10004));
 
         boolean valid = this.hasPermission(scopeLevel.get(), map);
+        if (valid) {
+            this.setToThreadLocal(map);
+        }
         return valid;
     }
 
@@ -51,6 +59,13 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         super.afterConcurrentHandlingStarted(request, response, handler);
+    }
+
+    private void setToThreadLocal(Map<String, Claim> map) {
+        Long uid = map.get("uid").asLong();
+        Integer scope = map.get("scope").asInt();
+        User user = this.userService.getUserById(uid);
+        LocalUser.set(user, scope);
     }
 
     public boolean hasPermission(ScopeLevel scopeLevel, Map<String, Claim> map) {

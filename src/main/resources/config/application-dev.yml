@@ -21,3 +21,6 @@ nuon:
     # token令牌key
     jwt-key: nuon20190802
     token-expired-in: 86400000
+  order:
+    max-sku-limit: 777
+    pay-time-limit: 3600
